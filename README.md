@@ -1,5 +1,4 @@
 
-![demo]([https://bobbyhadz.com/images/blog/change-vscode-integrated-terminal-colors/hover-over-color.gif ](https://github.com/MOSTAFA-IMANI/RockPaper/blob/master/sampel/demo.gif)'demo')
 <div align="center">
 
   <h1>Rock Paper Scissor</h1>
@@ -30,6 +29,7 @@ If two objects are of the same type e.g. two rocks, then they will bounce. If tw
 </div>
 ![](https://github.com/MOSTAFA-IMANI/RockPaper/blob/master/sampel/demo.gif)
 
+<img src="https://github.com/MOSTAFA-IMANI/RockPaper/blob/master/sampel/demo.gif" height="20" width="100%">
 <!-- TechStack -->
 ### :space_invader: Main Features
 
