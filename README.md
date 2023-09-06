@@ -30,6 +30,7 @@ If two objects are of the same type e.g. two rocks, then they will bounce. If tw
 ![](https://github.com/MOSTAFA-IMANI/RockPaper/blob/master/sampel/demo.gif)
 
 <img src="https://github.com/MOSTAFA-IMANI/RockPaper/blob/master/sampel/demo.gif" height="20" width="100%">
+![](sampel/demo.gif)
 <!-- TechStack -->
 ### :space_invader: Main Features
 
