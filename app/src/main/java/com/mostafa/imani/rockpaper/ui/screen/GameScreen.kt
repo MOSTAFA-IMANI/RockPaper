@@ -1,13 +1,14 @@
 package com.mostafa.imani.rockpaper.ui.screen
 
-import android.util.Log
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.VectorConverter
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
@@ -56,7 +57,7 @@ fun GameScreen(
         val objectSize =
             with(density) { OBJECT_SIZE.dp.toPx().roundToInt() }
         if (width > 0 && height > 0) {
-            val wallFrame = BoundFrame(width, height)
+            val wallFrame = BoundFrame(width- objectSize, height-objectSize)
             PlayScreen(
                 wallFrame, objectSize,
                 getListOfObjects(1, wallFrame, objectSize)
@@ -86,20 +87,31 @@ private fun getListOfObjects(
 fun PlayScreen(
     wallFrame: BoundFrame,
     itemSizePx: Int,
-    initialOGameObjectList: List<AnimationObjects>,
+    gameObjectList: List<AnimationObjects>,
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .border(width = wallFrame.stroke.dp, color = Color.Black)
     ) {
 
-        DrawObjects(initialOGameObjectList)
-        MoveObjects(initialOGameObjectList)
-        
+        DrawObjects(gameObjectList)
+        MoveObjects(gameObjectList)
+        HitTheWallCheck(gameObjectList,wallFrame)
 
     }
 
 
+}
+
+@Composable
+fun HitTheWallCheck(gameObjectList: List<AnimationObjects>, wallFrame: BoundFrame) {
+    gameObjectList.forEach {
+        if(it.checkItemReceived()||wallFrame.isOffsetOutOfBound(it.currentOffset.value)){
+            it.startOffset = it.destination.value
+            it.destination.value = wallFrame.findNewDistillation(it.startOffset, it.currentOffset.value)
+        }
+    }
 }
 
 @Composable
@@ -134,7 +146,7 @@ fun DrawObjects(objectList: List<AnimationObjects>) {
 @Composable
 fun DrawScissor(objectAnimationObjects: Scissor) {
     Icon(
-        modifier = Modifier.offset { objectAnimationObjects.currentOffset.value.toIntOffset() },
+        modifier = Modifier.size(OBJECT_SIZE.dp).offset { objectAnimationObjects.currentOffset.value.toIntOffset() },
         imageVector = Icons.Filled.Close,
         contentDescription = "sci"
     )
@@ -143,7 +155,7 @@ fun DrawScissor(objectAnimationObjects: Scissor) {
 @Composable
 fun DrawRock(objectAnimationObjects: Rock) {
     Icon(
-        modifier = Modifier.offset { objectAnimationObjects.currentOffset.value.toIntOffset() },
+        modifier = Modifier.size(OBJECT_SIZE.dp).offset { objectAnimationObjects.currentOffset.value.toIntOffset() },
         imageVector = Icons.Filled.Close,
         contentDescription = "sci"
     )
@@ -152,7 +164,7 @@ fun DrawRock(objectAnimationObjects: Rock) {
 @Composable
 fun DrawPaper(objectAnimationObjects: Paper) {
     Icon(
-        modifier = Modifier.offset { objectAnimationObjects.currentOffset.value.toIntOffset() },
+        modifier = Modifier.size(OBJECT_SIZE.dp).offset { objectAnimationObjects.currentOffset.value.toIntOffset() },
         imageVector = Icons.Filled.Close,
         contentDescription = "sci"
     )
