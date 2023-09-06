@@ -28,7 +28,7 @@ If two objects are of the same type e.g. two rocks, then they will bounce. If tw
 <div align="center"> 
   <img src="sample/demo.gif" alt="screenshot" />
 </div>
-
+![](https://github.com/MOSTAFA-IMANI/RockPaper/blob/master/sampel/demo.gif)
 
 <!-- TechStack -->
 ### :space_invader: Main Features
