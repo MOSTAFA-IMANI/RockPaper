@@ -75,7 +75,15 @@ data class BoundFrame(
     }
 
     fun isOffsetOutOfBound(currentPosition: Offset): Boolean {
-        return (currentPosition.x < 0 || currentPosition.x > width) && (currentPosition.y < 0 || currentPosition.y > height)
+        if(currentPosition.x < 0 - ERROR_IGNORE_THRESHOLD)
+            return true
+        if ( currentPosition.x > width + ERROR_IGNORE_THRESHOLD)
+            return true
+        if (currentPosition.y < 0 - ERROR_IGNORE_THRESHOLD)
+            return true
+        if (currentPosition.y > height+ ERROR_IGNORE_THRESHOLD)
+            return true
+        return (currentPosition.x < 0 || currentPosition.x > width) && (currentPosition.y < 0 || currentPosition.y > height).also { println(it) }
     }
 
     fun findNewDistillation(start: Offset, end: Offset): Offset {
