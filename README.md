@@ -1,8 +1,8 @@
 
-
+![demo]([https://bobbyhadz.com/images/blog/change-vscode-integrated-terminal-colors/hover-over-color.gif ](https://github.com/MOSTAFA-IMANI/RockPaper/blob/master/sampel/demo.gif)'demo')
 <div align="center">
 
-  <h1>Aparat TV sample</h1>
+  <h1>Rock Paper Scissor</h1>
 
   <p>
     A Simple Challenge for animating object ibn Android with JetpackCompose  
