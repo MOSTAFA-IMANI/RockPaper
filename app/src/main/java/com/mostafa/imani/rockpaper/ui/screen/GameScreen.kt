@@ -1,7 +1,9 @@
 package com.mostafa.imani.rockpaper.ui.screen
 
+import android.util.Log
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.VectorConverter
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -91,11 +94,22 @@ fun PlayScreen(
     ) {
 
         DrawObjects(initialOGameObjectList)
-
+        MoveObjects(initialOGameObjectList)
+        
 
     }
 
 
+}
+
+@Composable
+fun MoveObjects(objectList: List<AnimationObjects>) {
+    objectList.forEach {
+        LaunchedEffect(it.destination.value.x,it.destination.value.y){
+            it.currentOffset.stop()
+            it.currentOffset.animateTo(it.destination.value, tween(durationMillis = 3000))
+        }
+    }
 }
 
 @Composable
