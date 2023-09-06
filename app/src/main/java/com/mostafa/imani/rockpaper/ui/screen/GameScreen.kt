@@ -219,7 +219,7 @@ fun DrawObjects(objectList: List<AnimationObjects>) {
             }
         }
     }
-    
+
 }
 
 @Composable
