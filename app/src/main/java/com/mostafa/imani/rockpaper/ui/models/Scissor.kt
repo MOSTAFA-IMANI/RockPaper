@@ -12,4 +12,15 @@ data class Scissor (
     override var currentOffset: Animatable<Offset, AnimationVector2D>,
     override val destination: MutableState<Offset>,
     override val objectSize: Int,
-): AnimationObjects()
+    override var isRemoved: Boolean= false
+): AnimationObjects() {
+    override fun battleToOtherObject(objectB: AnimationObjects) {
+        when(objectB){
+
+            is Rock -> {
+             isRemoved = true
+            }
+
+        }
+    }
+}

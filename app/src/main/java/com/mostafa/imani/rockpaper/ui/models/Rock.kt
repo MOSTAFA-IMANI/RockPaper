@@ -11,5 +11,15 @@ data class Rock (
     override var startOffset: Offset,
     override var currentOffset: Animatable<Offset, AnimationVector2D>,
     override val objectSize: Int,
-    override val destination: MutableState<Offset>
-): AnimationObjects()
+    override val destination: MutableState<Offset>,
+    override var isRemoved: Boolean= false
+): AnimationObjects() {
+    override fun battleToOtherObject(objectB: AnimationObjects) {
+        when(objectB){
+            is Paper -> {
+                isRemoved = true
+            }
+
+        }
+    }
+}
